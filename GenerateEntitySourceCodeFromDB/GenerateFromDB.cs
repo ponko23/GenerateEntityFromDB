@@ -5,9 +5,7 @@ using System.Linq;
 
 namespace GenerateEntityFromDB
 {
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary></summary>
     public static class GenerateFromDB
     {
         /// <summary>
@@ -34,7 +32,7 @@ select
   case typ.name
 	when 'nvarchar' then col.max_length / 2
 	when 'varchar' then col.max_length
-	when 'decimal' then col.precision 
+	when 'decimal' then col.precision
 	else null
   end Length,
   col.scale MinorityDigit,
