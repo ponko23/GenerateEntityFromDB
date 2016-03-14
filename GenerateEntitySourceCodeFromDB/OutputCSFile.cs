@@ -4,21 +4,21 @@ using System.Linq;
 
 namespace GenerateEntityFromDB
 {
-    /// <summary></summary>
+    /// <summary>csファイル出力クラスです。</summary>
     public class OutputCSFile
     {
-        /// <summary></summary>
-        public string OutputDirectoryPath { get; set; }
+        /// <summary>出力先ディレクトリパス文字列</summary>
+        private string OutputDirectoryPath { get; set; }
 
-        /// <summary></summary>
-        public string NameSpace { get; set; }
+        /// <summary>名前空間文字列</summary>
+        private string NameSpace { get; set; }
 
-        /// <summary></summary>
+        /// <summary>DBとC#の型変換用辞書</summary>
         private Dictionary<string, string> typeNameDictionary = new Dictionary<string, string>();
 
-        /// <summary>OutputCSFileクラスのインスタンスを初期化します</summary>
-        /// <param name="nameSpace"></param>
-        /// <param name="outputDirectoryPath"></param>
+        /// <summary>OutputCSFileクラスのインスタンスを初期化します。</summary>
+        /// <param name="nameSpace">名前空間文字列</param>
+        /// <param name="outputDirectoryPath">出力先ディレクトリパス文字列</param>
         public OutputCSFile(string nameSpace, string outputDirectoryPath)
         {
             this.NameSpace = nameSpace;
@@ -157,8 +157,8 @@ where
         }
 
 
-        /// <summary></summary>
-        /// <returns></returns>
+        /// <summary>Dapper用拡張メソッドを生成します。</summary>
+        /// <returns>Dapper用拡張メソッドのソースコード</returns>
         public string GenerateDapperExtentionClassSourceCode()
         {
             var output = new List<string>();
@@ -248,8 +248,8 @@ using System.Linq;
             return string.Join(string.Empty, output);
         }
 
-        /// <summary></summary>
-        /// <returns></returns>
+        /// <summary>IEntity interfaceを生成します。</summary>
+        /// <returns>IEntity interfaceのソースコード</returns>
         public string GenerateIEntitySourceCode()
         {
             var output = new List<string>();
@@ -298,16 +298,14 @@ using System.Linq;
             return string.Join(string.Empty, output);
         }
 
-
-
-        /// <summary></summary>
-        /// <param name="text"></param>
+        /// <summary>ソースコードをcsファイルに出力します。</summary>
+        /// <param name="text">ソースコード文字列</param>
         public void WriteFile(string filename, string text)
         {
             File.WriteAllText($"{this.OutputDirectoryPath}\\{filename}.cs", text);
         }
 
-        /// <summary>型変換用辞書を設定します</summary>
+        /// <summary>型変換用辞書を設定します。</summary>
         private void SetTypeNameDictionary()
         {
             this.typeNameDictionary.Add("nvarchar", "string");

@@ -56,7 +56,7 @@ namespace GenerateEntityFromDB
                 outputPath = outputPath.Remove(outputPath.Length - 1);
             }
             var output = new OutputCSFile(nameSpace, outputPath);
-            var tableInfos = GenerateFromDB.GetTableInfos(connectionString);
+            var tableInfos = GetTableInfo.GetTableInfos(connectionString);
             if (tableInfos.Count() == 0) return;
             if (!Directory.Exists(outputPath))
             {

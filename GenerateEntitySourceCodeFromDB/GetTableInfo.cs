@@ -5,14 +5,14 @@ using System.Linq;
 
 namespace GenerateEntityFromDB
 {
-    /// <summary></summary>
-    public static class GenerateFromDB
+    /// <summary>DBからテーブル情報を取得するクラスです。</summary>
+    public static class GetTableInfo
     {
         /// <summary>
-        /// DBからTable定義情報を取得します。
+        /// DBからテーブル情報を取得します。
         /// </summary>
         /// <param name="connectionString">DB接続文字列</param>
-        /// <returns>Table定義情報</returns>
+        /// <returns>テーブル情報</returns>
         public static TableInfo[] GetTableInfos(string connectionString)
         {
             using (var db = new SqlConnection(connectionString))
